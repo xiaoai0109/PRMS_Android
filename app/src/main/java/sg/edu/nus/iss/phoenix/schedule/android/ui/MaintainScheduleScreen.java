@@ -7,6 +7,8 @@ import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -29,9 +31,15 @@ public class MaintainScheduleScreen extends AppCompatActivity {
     private EditText mPSPresenterEditText;
     private EditText mPSProducerEditText;
     private ProgramSlot ps2edit = null;
+    private Button mPSNameSelectButton;
+    private Button mPSPresenteSelectButton;
+    private Button mPSProducerSelectButton;
+
     KeyListener mPSNameEditTextKeyListener = null;
     KeyListener mPSPresenterEditTextKeyListener = null;
     KeyListener mPSProducerEditTextKeyListener = null;
+
+    private ProgramSlot tmpPs = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +54,26 @@ public class MaintainScheduleScreen extends AppCompatActivity {
         mPSPresenterEditText = (EditText) findViewById(R.id.maintain_schedule_presenter_text_view);
         mPSProducerEditText = (EditText) findViewById(R.id.maintain_schedule_producer_text_view);
 
+        mPSNameSelectButton = (Button) findViewById(R.id.select_radio_program_button);
+        mPSPresenteSelectButton = (Button) findViewById(R.id.select_presenter_button);
+        mPSProducerSelectButton = (Button) findViewById(R.id.select_producer_button);
+
+        tmpPs = new ProgramSlot();
+
         // Keep the KeyListener for name EditText so as to enable editing after disabling it.
 //        mPSNameEditTextKeyListener = mPSNameEditText.getKeyListener();
 //        mPSPresenterEditTextKeyListener = mPSPresenterEditText.getKeyListener();
 //        mPSProducerEditTextKeyListener = mPSProducerEditText.getKeyListener();
+
+        mPSNameSelectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setTmpPs();
+                Log.d(TAG, "Maintain to select rp " + tmpPs.getRadioProgramName() + "\n" +
+                        tmpPs.getProgramSlotDate());
+                ControlFactory.getReviewSelectProgramController().startUseCase(tmpPs);
+            }
+        });
     }
 
     @Override
@@ -168,4 +192,14 @@ public class MaintainScheduleScreen extends AppCompatActivity {
 //            mPSProducerEditText.setKeyListener(null);
         }
     }
+
+    private void setTmpPs() {
+        tmpPs.setRadioProgramName(mPSNameEditText.getText().toString());
+        tmpPs.setProgramSlotDate(mPSDateEditText.getText().toString());
+        tmpPs.setProgramSlotSttime(mPSSttimeEditText.getText().toString());
+        tmpPs.setProgramSlotDuration(mPSDurationEditText.getText().toString());
+        tmpPs.setProgramSlotPresenter(mPSPresenterEditText.getText().toString());
+        tmpPs.setProgramSlotProducer(mPSProducerEditText.getText().toString());
+    }
+
 }

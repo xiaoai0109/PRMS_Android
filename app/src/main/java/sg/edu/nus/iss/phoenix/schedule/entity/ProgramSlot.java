@@ -28,6 +28,9 @@ public class ProgramSlot {
         this.programSlotSttime = programSlotSttime;
     }
 
+    public ProgramSlot() {
+    }
+
     public String getRadioProgramName() {
         return radioProgramName;
     }

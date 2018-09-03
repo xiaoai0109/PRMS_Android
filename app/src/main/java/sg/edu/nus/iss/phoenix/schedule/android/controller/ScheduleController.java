@@ -8,6 +8,7 @@ import java.util.List;
 
 import sg.edu.nus.iss.phoenix.core.android.controller.ControlFactory;
 import sg.edu.nus.iss.phoenix.core.android.controller.MainController;
+import sg.edu.nus.iss.phoenix.radioprogram.entity.RadioProgram;
 import sg.edu.nus.iss.phoenix.schedule.android.delegate.CreateScheduleDelegate;
 import sg.edu.nus.iss.phoenix.schedule.android.delegate.DeleteScheduleDelegate;
 import sg.edu.nus.iss.phoenix.schedule.android.delegate.RetrieveSchedulesDelegate;
@@ -58,7 +59,7 @@ public class ScheduleController {
 
         Intent intent = new Intent(MainController.getApp(), MaintainScheduleScreen.class);
         Bundle b = new Bundle();
-        b.putString("Name", programSlot.getRadioProgramName());
+        b.putString("Rpname", programSlot.getRadioProgramName());
         b.putString("Date", programSlot.getProgramSlotDate());
         b.putString("Sttime", programSlot.getProgramSlotSttime());
         b.putString("Duration", programSlot.getProgramSlotDuration());
@@ -121,5 +122,10 @@ public class ScheduleController {
 
     public void maintainedSchedule() {
         ControlFactory.getMainController().maintainedSchedule();
+    }
+
+    public void selectedProgram(RadioProgram rpSelected, ProgramSlot ps) {
+
+
     }
 }

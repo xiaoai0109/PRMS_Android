@@ -19,6 +19,7 @@ import java.util.List;
 import sg.edu.nus.iss.phoenix.R;
 import sg.edu.nus.iss.phoenix.core.android.controller.ControlFactory;
 import sg.edu.nus.iss.phoenix.radioprogram.entity.RadioProgram;
+import sg.edu.nus.iss.phoenix.schedule.entity.ProgramSlot;
 
 public class ReviewSelectProgramScreen extends AppCompatActivity {
     // Tag for logging
@@ -88,7 +89,14 @@ public class ReviewSelectProgramScreen extends AppCompatActivity {
                 }
                 else {
                     Log.v(TAG, "Selected radio program: " + selectedRP.getRadioProgramName() + "...");
-                    ControlFactory.getReviewSelectProgramController().selectProgram(selectedRP);
+                    ProgramSlot tmpPs = new ProgramSlot();
+                    tmpPs.setProgramSlotDate(getIntent().getExtras().getString("Date"));
+                    tmpPs.setProgramSlotSttime(getIntent().getExtras().getString("Sttime"));
+                    tmpPs.setProgramSlotDuration(getIntent().getExtras().getString("Duration"));
+                    tmpPs.setProgramSlotPresenter(getIntent().getExtras().getString("Presenter"));
+                    tmpPs.setProgramSlotProducer(getIntent().getExtras().getString("Producer"));
+
+                    ControlFactory.getReviewSelectProgramController().selectProgram(selectedRP, tmpPs);
                 }
         }
 

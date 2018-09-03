@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:text="Program Name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Program Name" />
+
+        <Button
+            android:id="@+id/select_radio_program_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Select"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/maintain_schedule_program_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Radio Program Name" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Date"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Date" />
+
+        <EditText
+            android:id="@+id/maintain_schedule_date_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:maxLength="10"
+            tools:text="2018-08-30" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Start Time"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Start Time" />
+
+        <EditText
+            android:id="@+id/maintain_schedule_sttime_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:maxLength="8"
+            android:text="19:30:00"
+            tools:text="19:30:00" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Duration"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Duration" />
+
+        <EditText
+            android:id="@+id/maintain_schedule_duration_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:maxLength="8"
+            android:text="00:30:00"
+            tools:text="00:30:00" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Presenter"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Presenter" />
+
+        <Button
+            android:id="@+id/select_presenter_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorPrimary"
+            android:text="Select"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/maintain_schedule_presenter_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Presenter" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Producer"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Producer" />
+
+        <Button
+            android:id="@+id/select_producer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorPrimary"
+            android:text="Select"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/maintain_schedule_producer_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Producer" />
+
+</LinearLayout>

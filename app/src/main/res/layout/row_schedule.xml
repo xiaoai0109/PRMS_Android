@@ -59,7 +59,7 @@
         tools:text="Duration" />
 
     <TextView
-        android:id="@+id/maintain_program_duration_text_view"
+        android:id="@+id/maintain_schedule_duration_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLength="8"

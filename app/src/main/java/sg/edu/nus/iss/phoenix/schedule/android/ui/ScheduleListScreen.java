@@ -102,7 +102,9 @@ public class ScheduleListScreen extends AppCompatActivity {
                     Log.v(TAG, "There is no selected program slot.");
                 }
                 else {
-                    Log.v(TAG, "Viewing program slot: " + selectedPS.getRadioProgramName() + "...");
+                    Log.d(TAG, "Viewing program slot: " + selectedPS.getRadioProgramName() + " " +
+                            selectedPS.getProgramSlotDuration() + " " +
+                            selectedPS.getProgramSlotSttime() + "...");
                     ControlFactory.getScheduleController().selectEditSchedule(selectedPS);
                 }
         }

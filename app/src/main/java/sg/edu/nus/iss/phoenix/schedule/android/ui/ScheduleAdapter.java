@@ -3,6 +3,7 @@ package sg.edu.nus.iss.phoenix.schedule.android.ui;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import sg.edu.nus.iss.phoenix.R;
 import sg.edu.nus.iss.phoenix.radioprogram.entity.RadioProgram;
 import sg.edu.nus.iss.phoenix.schedule.entity.ProgramSlot;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by mia on 2/9/18.
@@ -50,17 +53,21 @@ public class ScheduleAdapter extends ArrayAdapter<ProgramSlot> {
         scheduleSttime.setText(currentPS.getProgramSlotSttime(), TextView.BufferType.NORMAL);
         scheduleSttime.setKeyListener(null);
 
-        TextView scheduleDuration = (TextView)listItemView.findViewById(R.id.maintain_program_duration_text_view);
+        TextView scheduleDuration = (TextView)listItemView.findViewById(R.id.maintain_schedule_duration_text_view);
         scheduleDuration.setText(currentPS.getProgramSlotDuration(), TextView.BufferType.NORMAL);
         scheduleDuration.setKeyListener(null);
 
         TextView schedulePresenter = (TextView)listItemView.findViewById(R.id.maintain_schedule_presenter_text_view);
-        schedulePresenter.setText(currentPS.getProgramSlotDuration(), TextView.BufferType.NORMAL);
+        schedulePresenter.setText(currentPS.getProgramSlotPresenter(), TextView.BufferType.NORMAL);
         schedulePresenter.setKeyListener(null);
 
         TextView scheduleProducer = (TextView)listItemView.findViewById(R.id.maintain_schedule_producer_text_view);
-        scheduleProducer.setText(currentPS.getProgramSlotDuration(), TextView.BufferType.NORMAL);
+        scheduleProducer.setText(currentPS.getProgramSlotProducer(), TextView.BufferType.NORMAL);
         scheduleProducer.setKeyListener(null);
+
+        Log.v(TAG, "Listing program slot: " + currentPS.getRadioProgramName() + " " +
+                currentPS.getProgramSlotSttime() + " " +
+                currentPS.getProgramSlotSttime() + "...");
 
         return listItemView;
     }

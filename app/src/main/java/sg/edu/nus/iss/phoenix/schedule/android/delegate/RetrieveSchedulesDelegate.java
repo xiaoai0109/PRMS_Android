@@ -85,6 +85,7 @@ public class RetrieveSchedulesDelegate extends AsyncTask<String, Void, String> {
                 JSONObject reader = new JSONObject(result);
                 JSONArray psArray = reader.getJSONArray("psList");
 
+                Log.d(TAG, "loading ps psArray " + psArray);
                 for (int i = 0; i < psArray.length(); i++) {
                     JSONObject psJson = psArray.getJSONObject(i);
                     String rpname = psJson.getString("rpname");
@@ -93,7 +94,7 @@ public class RetrieveSchedulesDelegate extends AsyncTask<String, Void, String> {
                     String duration = psJson.getString("duration");
                     String presenter = psJson.getString("presenter");
                     String producer = psJson.getString("producer");
-
+                    Log.d(TAG, "loading ps jsonObject " + psJson);
                     programSlots.add(new ProgramSlot(rpname, date, sttime, duration, presenter, producer));
                 }
             } catch (JSONException e) {

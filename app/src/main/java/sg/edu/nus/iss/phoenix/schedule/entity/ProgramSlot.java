@@ -13,13 +13,19 @@ public class ProgramSlot {
     private String programSlotProducer;
 
     public ProgramSlot(String radioProgramName, String programSlotDate, String programSlotSttime,
-                       String programSlotDuration, String programSlotPresenter, String programSlotProducer) {
+                        String programSlotDuration, String programSlotPresenter, String programSlotProducer) {
         this.radioProgramName = radioProgramName;
         this.programSlotDate = programSlotDate;
         this.programSlotSttime = programSlotSttime;
         this.programSlotDuration = programSlotDuration;
         this.programSlotPresenter = programSlotPresenter;
         this.programSlotProducer = programSlotProducer;
+    }
+
+    public ProgramSlot(String radioProgramName, String programSlotDate, String programSlotSttime) {
+        this.radioProgramName = radioProgramName;
+        this.programSlotDate = programSlotDate;
+        this.programSlotSttime = programSlotSttime;
     }
 
     public String getRadioProgramName() {

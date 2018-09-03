@@ -71,35 +71,45 @@ public class ScheduleController {
 
     public void onDisplaySchedule(MaintainScheduleScreen maintainScheduleScreen) {
         this.maintainScheduleScreen = maintainScheduleScreen;
-//        if (ps2edit == null)
-//            maintainScheduleScreen.createSchedule();
-//        else
-//            maintainScheduleScreen.editSchedule(ps2edit);
+        if (ps2edit == null)
+            maintainScheduleScreen.createSchedule();
+        else
+            maintainScheduleScreen.editSchedule(ps2edit);
     }
 
-    public void selectUpdateSchedule(ProgramSlot ps) {
-//        new UpdateScheduleDelegate(this).execute(ps);
+    public void selectUpdateSchedule(ProgramSlot ps, ProgramSlot oldPs) {
+        Log.d(TAG, "selectUpdateSchedule new program slot at " + ps.getRadioProgramName() + " " +
+                ps.getProgramSlotDate() + " " +
+                ps.getProgramSlotSttime() + " " +
+                ps.getProgramSlotDuration() + " " +
+                ps.getProgramSlotPresenter() + "...");
+        Log.d(TAG, "selectUpdateSchedule old program slot at " + oldPs.getRadioProgramName() + " " +
+                oldPs.getProgramSlotDate() + " " +
+                oldPs.getProgramSlotSttime() + " " +
+                oldPs.getProgramSlotDuration() + " " +
+                oldPs.getProgramSlotPresenter() + "...");
+        new UpdateScheduleDelegate(this).execute(ps, oldPs);
     }
 
     public void selectDeleteSchedule(ProgramSlot ps) {
 //        new DeleteScheduleDelegate(this).execute(ps.getScheduleSlotName());
     }
 
-    public void programDeleted(boolean success) {
+    public void scheduleDeleted(boolean success) {
         // Go back to ScheduleList screen with refreshed schedules.
         startUseCase();
     }
 
-    public void programUpdated(boolean success) {
+    public void scheduleUpdated(boolean success) {
         // Go back to ScheduleList screen with refreshed schedules.
         startUseCase();
     }
 
     public void selectCreateSchedule(ProgramSlot ps) {
-//        new CreateScheduleDelegate(this).execute(ps);
+        new CreateScheduleDelegate(this).execute(ps);
     }
 
-    public void programCreated(boolean success) {
+    public void scheduleCreated(boolean success) {
         // Go back to ScheduleList screen with refreshed schedules.
         startUseCase();
     }

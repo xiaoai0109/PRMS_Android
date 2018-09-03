@@ -4,4 +4,5 @@ public class DelegateHelper {
     // RESTful parameters.
     public final static String PRMS_BASE_URL_AUTHENTICATE = "http://192.168.0.115:8080/phoenix/rest/Login/doLogin?";
     public final static String PRMS_BASE_URL_RADIO_PROGRAM = "http://192.168.0.115:8080/phoenix/rest/radioprogram";
+    public final static String PRMS_BASE_URL_SCHEDULE = "http://192.168.0.115:8080/phoenix/rest/schedule";
 }

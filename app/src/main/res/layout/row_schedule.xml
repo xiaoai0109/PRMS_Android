@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Program Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Program Name" />
+
+    <TextView
+        android:id="@+id/maintain_schedule_program_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Radio Program Name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Date" />
+
+    <TextView
+        android:id="@+id/maintain_schedule_date_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="2018-08-30" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Time"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Start Time" />
+
+    <TextView
+        android:id="@+id/maintain_schedule_sttime_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="8"
+        android:text="19:30:00"
+        tools:text="19:30:00" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Duration"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Duration" />
+
+    <TextView
+        android:id="@+id/maintain_program_duration_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="8"
+        android:text="00:30:00"
+        tools:text="00:30:00" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Presenter"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Presenter" />
+
+    <TextView
+        android:id="@+id/maintain_schedule_presenter_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Presenter" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Producer"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Producer" />
+
+    <TextView
+        android:id="@+id/maintain_schedule_producer_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Producer" />
+
+</LinearLayout>

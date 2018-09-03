@@ -1,6 +1,7 @@
 package sg.edu.nus.iss.phoenix.radioprogram.android.controller;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import java.util.List;
@@ -49,12 +50,12 @@ public class ProgramController {
         Log.v(TAG, "Editing radio program: " + radioProgram.getRadioProgramName() + "...");
 
         Intent intent = new Intent(MainController.getApp(), MaintainProgramScreen.class);
-/*        Bundle b = new Bundle();
+        Bundle b = new Bundle();
         b.putString("Name", radioProgram.getRadioProgramName());
         b.putString("Description", radioProgram.getRadioProgramDescription());
         b.putString("Duration", radioProgram.getRadioProgramDuration());
         intent.putExtras(b);
-*/
+
         MainController.displayScreen(intent);
     }
 

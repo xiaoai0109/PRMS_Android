@@ -55,15 +55,26 @@ public class ProgramListScreen extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.radio_pm_list);
         mListView.setAdapter(mRPAdapter);
 
+//        // Setup the item selection listener
+//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//                // Log.v(TAG, "Radio program at position " + position + " selected.");
+//                RadioProgram rp = (RadioProgram) adapterView.getItemAtPosition(position);
+//                // Log.v(TAG, "Radio program name is " + rp.getRadioProgramName());
+//                selectedRP = rp;
+//                ControlFactory.getProgramController().selectEditProgram(rp);
+//            }
+//        });
         // Setup the item selection listener
         mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 // Log.v(TAG, "Radio program at position " + position + " selected.");
                 RadioProgram rp = (RadioProgram) adapterView.getItemAtPosition(position);
-                ControlFactory.getProgramController().selectEditProgram(rp);
                 // Log.v(TAG, "Radio program name is " + rp.getRadioProgramName());
                 selectedRP = rp;
+//                ControlFactory.getProgramController().selectEditProgram(rp);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

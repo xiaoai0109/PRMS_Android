@@ -68,7 +68,7 @@ public class ReviewSelectProgramController {
     public void selectProgram(RadioProgram radioProgram, ProgramSlot programSlot) {
         rpSelected = radioProgram;
         Log.v(TAG, "Selected radio program: " + radioProgram.getRadioProgramName() + ".");
-        programSlot.setRadioProgramName(rpSelected.getRadioProgramName());
+//        programSlot.setRadioProgramName(rpSelected.getRadioProgramName());
         Log.d(TAG, "Updating new program slot via selecting " + programSlot.getRadioProgramName() + "\n" +
                 programSlot.getProgramSlotDate() + " " +
                 programSlot.getProgramSlotSttime() + " " +
@@ -76,7 +76,7 @@ public class ReviewSelectProgramController {
                 programSlot.getProgramSlotPresenter() + " " +
                 programSlot.getProgramSlotProducer() + "...");
         // To call the base use case controller with the selected radio program.
-        ControlFactory.getScheduleController().selectEditSchedule(programSlot);
+        ControlFactory.getScheduleController().selectedProgram(radioProgram, programSlot);
     }
 
     public void selectCancel() {

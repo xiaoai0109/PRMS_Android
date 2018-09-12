@@ -125,7 +125,7 @@ public class ScheduleController {
     }
 
     public void selectedProgram(RadioProgram rpSelected, ProgramSlot ps) {
-
-
+        ps.setRadioProgramName(rpSelected.getRadioProgramName());
+        selectEditSchedule(ps);
     }
 }

@@ -7,6 +7,12 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/maintain_schedule_id_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="id" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Program Name"

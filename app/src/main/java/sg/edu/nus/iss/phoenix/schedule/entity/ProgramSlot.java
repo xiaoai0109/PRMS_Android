@@ -5,6 +5,7 @@ package sg.edu.nus.iss.phoenix.schedule.entity;
  */
 
 public class ProgramSlot {
+    private String id;
     private String radioProgramName;
     private String programSlotDate;
     private String programSlotSttime;
@@ -12,8 +13,19 @@ public class ProgramSlot {
     private String programSlotPresenter;
     private String programSlotProducer;
 
-    public ProgramSlot(String radioProgramName, String programSlotDate, String programSlotSttime,
+    public ProgramSlot(String id, String radioProgramName, String programSlotDate, String programSlotSttime,
                         String programSlotDuration, String programSlotPresenter, String programSlotProducer) {
+        this.id = id;
+        this.radioProgramName = radioProgramName;
+        this.programSlotDate = programSlotDate;
+        this.programSlotSttime = programSlotSttime;
+        this.programSlotDuration = programSlotDuration;
+        this.programSlotPresenter = programSlotPresenter;
+        this.programSlotProducer = programSlotProducer;
+    }
+
+    public ProgramSlot(String radioProgramName, String programSlotDate, String programSlotSttime,
+                       String programSlotDuration, String programSlotPresenter, String programSlotProducer) {
         this.radioProgramName = radioProgramName;
         this.programSlotDate = programSlotDate;
         this.programSlotSttime = programSlotSttime;
@@ -29,6 +41,14 @@ public class ProgramSlot {
     }
 
     public ProgramSlot() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getRadioProgramName() {

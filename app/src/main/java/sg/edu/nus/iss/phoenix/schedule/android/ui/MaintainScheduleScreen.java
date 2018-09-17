@@ -24,6 +24,7 @@ public class MaintainScheduleScreen extends AppCompatActivity {
     // Tag for logging
     private static final String TAG = MaintainScheduleScreen.class.getName();
 
+    private TextView mPSIdEditText;
     private EditText mPSNameEditText;
     private EditText mPSDateEditText;
     private EditText mPSSttimeEditText;
@@ -47,6 +48,7 @@ public class MaintainScheduleScreen extends AppCompatActivity {
         setContentView(R.layout.activity_schedule);
 
         // Find all relevant views that we will need to read user input from
+        mPSIdEditText = (TextView) findViewById(R.id.maintain_schedule_id_text_view);
         mPSNameEditText = (EditText) findViewById(R.id.maintain_schedule_program_name_text_view);
         mPSDateEditText = (EditText) findViewById(R.id.maintain_schedule_date_text_view);
         mPSSttimeEditText = (EditText) findViewById(R.id.maintain_schedule_sttime_text_view);
@@ -112,7 +114,7 @@ public class MaintainScheduleScreen extends AppCompatActivity {
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
                 // Save radio program.
-                if (ps2edit == null) { // Newly created.
+                if (ps2edit == null || ps2edit.getId() == null) { // Newly created.
                     Log.v(TAG, "Creating program slot " + mPSNameEditText.getText().toString() + "...");
                     ProgramSlot ps = new ProgramSlot(mPSNameEditText.getText().toString(),
                             mPSDateEditText.getText().toString(), mPSSttimeEditText.getText().toString(),
@@ -121,11 +123,12 @@ public class MaintainScheduleScreen extends AppCompatActivity {
                     ControlFactory.getScheduleController().selectCreateSchedule(ps);
                 }
                 else { // Edited.
-                    ProgramSlot oldPs = new ProgramSlot(ps2edit.getRadioProgramName(), ps2edit.getProgramSlotDate(),
-                            ps2edit.getProgramSlotSttime());
-                    Log.d(TAG, "Updating program slot at " + oldPs.getRadioProgramName() + " " +
-                            oldPs.getProgramSlotDate() + " " +
-                            oldPs.getProgramSlotSttime() + "...");
+//                    ProgramSlot oldPs = new ProgramSlot(ps2edit.getRadioProgramName(), ps2edit.getProgramSlotDate(),
+//                            ps2edit.getProgramSlotSttime());
+//                    Log.d(TAG, "Updating program slot at " + oldPs.getRadioProgramName() + " " +
+//                            oldPs.getProgramSlotDate() + " " +
+//                            oldPs.getProgramSlotSttime() + "...");
+                    Log.d(TAG, "Updating program slot at " + ps2edit.getId());
                     ps2edit.setRadioProgramName(mPSNameEditText.getText().toString());
                     ps2edit.setProgramSlotDate(mPSDateEditText.getText().toString());
                     ps2edit.setProgramSlotSttime(mPSSttimeEditText.getText().toString());
@@ -139,13 +142,13 @@ public class MaintainScheduleScreen extends AppCompatActivity {
                     Log.d(TAG, "Updating new program slot at " + ps2edit.getRadioProgramName() + " " +
                             ps2edit.getProgramSlotDate() + " " +
                             ps2edit.getProgramSlotSttime() + "...");
-                    ControlFactory.getScheduleController().selectUpdateSchedule(ps2edit, oldPs);
+                    ControlFactory.getScheduleController().selectUpdateSchedule(ps2edit);
                 }
                 return true;
             // Respond to a click on the "Delete" menu option
             case R.id.action_delete:
                 Log.v(TAG, "Deleting program slot " + ps2edit.getRadioProgramName() + "...");
-                ControlFactory.getScheduleController().selectDeleteSchedule(ps2edit);
+                ControlFactory.getScheduleController().selectDeleteSchedule(ps2edit.getId());
                 return true;
             // Respond to a click on the "Cancel" menu option
             case R.id.action_cancel:
@@ -166,6 +169,7 @@ public class MaintainScheduleScreen extends AppCompatActivity {
     public void createSchedule() {
         // mia: not sure
         this.ps2edit = null;
+        mPSIdEditText.setText("0");
         mPSNameEditText.setText("", TextView.BufferType.EDITABLE);
         mPSDateEditText.setText("", TextView.BufferType.EDITABLE);
         mPSSttimeEditText.setText("", TextView.BufferType.EDITABLE);
@@ -181,9 +185,26 @@ public class MaintainScheduleScreen extends AppCompatActivity {
         this.ps2edit = ps2edit;
         if (ps2edit != null) {
 //            mPSNameEditText.setText(ps2edit.getRadioProgramName(), TextView.BufferType.NORMAL);
+            mPSIdEditText.setText(ps2edit.getId());
             mPSNameEditText.setText(ps2edit.getRadioProgramName(), TextView.BufferType.EDITABLE);
             mPSDateEditText.setText(ps2edit.getProgramSlotDate(), TextView.BufferType.EDITABLE);
             mPSSttimeEditText.setText(ps2edit.getProgramSlotSttime(), TextView.BufferType.EDITABLE);
+            mPSDurationEditText.setText(ps2edit.getProgramSlotDuration(), TextView.BufferType.EDITABLE);
+            mPSPresenterEditText.setText(ps2edit.getProgramSlotPresenter(), TextView.BufferType.EDITABLE);
+            mPSProducerEditText.setText(ps2edit.getProgramSlotProducer(), TextView.BufferType.EDITABLE);
+//            mPSNameEditText.setKeyListener(null);
+//            mPSPresenterEditText.setKeyListener(null);
+//            mPSProducerEditText.setKeyListener(null);
+        }
+    }
+
+    public void copySchedule(ProgramSlot ps2edit) {
+        this.ps2edit = ps2edit;
+        if (ps2edit != null) {
+            mPSIdEditText.setText("0");
+            mPSNameEditText.setText(ps2edit.getRadioProgramName(), TextView.BufferType.EDITABLE);
+            mPSDateEditText.setText("", TextView.BufferType.EDITABLE);
+            mPSSttimeEditText.setText("", TextView.BufferType.EDITABLE);
             mPSDurationEditText.setText(ps2edit.getProgramSlotDuration(), TextView.BufferType.EDITABLE);
             mPSPresenterEditText.setText(ps2edit.getProgramSlotPresenter(), TextView.BufferType.EDITABLE);
             mPSProducerEditText.setText(ps2edit.getProgramSlotProducer(), TextView.BufferType.EDITABLE);

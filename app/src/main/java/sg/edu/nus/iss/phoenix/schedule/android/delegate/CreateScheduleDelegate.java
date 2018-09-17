@@ -26,7 +26,7 @@ public class CreateScheduleDelegate extends AsyncTask<ProgramSlot, Void, Boolean
     // Tag for logging
     private static final String TAG = CreateScheduleDelegate.class.getName();
 
-    private final ScheduleController scheduleController;
+    private ScheduleController scheduleController;
 
     public CreateScheduleDelegate(ScheduleController scheduleController) {
         this.scheduleController = scheduleController;

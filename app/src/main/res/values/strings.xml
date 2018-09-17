@@ -33,6 +33,7 @@
     <string name="cd_products_list">Products list</string>
     <string name="cd_comments_list">Comments list</string>
     <string name="cd_product_name">Name of the product</string>
+    <string name="action_copy">Copy</string>
     <string name="action_view">View</string>
     <string name="action_cancel">Cancel</string>
     <string name="action_save">Save</string>

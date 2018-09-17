@@ -44,28 +44,28 @@ public class UpdateScheduleDelegate extends AsyncTask<ProgramSlot, Void, Boolean
             url = new URL(builtUri.toString());
         } catch (MalformedURLException e) {
             Log.v(TAG, e.getMessage());
-            return new Boolean(false);
+            return false;
         }
 
         JSONObject jsonNewPs = new JSONObject();
         JSONObject jsonOldPs = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
+//        JSONArray jsonArray = new JSONArray();
         try {
-
+            jsonNewPs.put("id", params[0].getId());
             jsonNewPs.put("rpname", params[0].getRadioProgramName());
             jsonNewPs.put("date", params[0].getProgramSlotDate());
             jsonNewPs.put("sttime", params[0].getProgramSlotSttime());
             jsonNewPs.put("duration", params[0].getProgramSlotDuration());
             jsonNewPs.put("presenter", params[0].getProgramSlotPresenter());
             jsonNewPs.put("producer", params[0].getProgramSlotProducer());
-            jsonOldPs.put("rpname", params[1].getRadioProgramName());
-            jsonOldPs.put("date", params[1].getProgramSlotDate());
-            jsonOldPs.put("sttime", params[1].getProgramSlotSttime());
+//            jsonOldPs.put("rpname", params[1].getRadioProgramName());
+//            jsonOldPs.put("date", params[1].getProgramSlotDate());
+//            jsonOldPs.put("sttime", params[1].getProgramSlotSttime());
             Log.d(TAG, "Updating new ps json " + jsonNewPs);
-            Log.d(TAG, "Updating old ps json " + jsonOldPs);
-            jsonArray.put(0, jsonNewPs);
-            jsonArray.put(1, jsonOldPs);
-            Log.d(TAG, "Updating json array " + jsonArray);
+//            Log.d(TAG, "Updating old ps json " + jsonOldPs);
+//            jsonArray.put(0, jsonNewPs);
+//            jsonArray.put(1, jsonOldPs);
+//            Log.d(TAG, "Updating json array " + jsonArray);
         } catch (JSONException e) {
             Log.v(TAG, e.getMessage());
         }
@@ -81,8 +81,8 @@ public class UpdateScheduleDelegate extends AsyncTask<ProgramSlot, Void, Boolean
             httpURLConnection.setRequestProperty("Content-Type", "application/json; charset=utf8");
             httpURLConnection.setDoOutput(true);
             dos = new DataOutputStream(httpURLConnection.getOutputStream());
-//            dos.writeUTF(json.toString());
-            dos.writeUTF(jsonArray.toString());
+            dos.writeUTF(jsonNewPs.toString());
+//            dos.writeUTF(jsonArray.toString());
             dos.write(512);
             Log.v(TAG, "Http POST response " + httpURLConnection.getResponseCode());
             success = true;

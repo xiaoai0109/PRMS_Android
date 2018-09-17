@@ -41,31 +41,36 @@ public class ScheduleAdapter extends ArrayAdapter<ProgramSlot> {
         //    Word currentWord = getItem(position);
         ProgramSlot currentPS = getItem(position);
 
+        TextView scheduleId = (TextView)listItemView.findViewById(R.id.maintain_schedule_id_text_view);
+        scheduleId.setText(currentPS.getId(), TextView.BufferType.NORMAL);
+
+
         TextView scheduleProgramName = (TextView)listItemView.findViewById(R.id.maintain_schedule_program_name_text_view);
         scheduleProgramName.setText(currentPS.getRadioProgramName(), TextView.BufferType.NORMAL);
-        scheduleProgramName.setKeyListener(null); // This disables editing.
+//        scheduleProgramName.setKeyListener(null); // This disables editing.
 
         TextView scheduleDate = (TextView)listItemView.findViewById(R.id.maintain_schedule_date_text_view);
         scheduleDate.setText(currentPS.getProgramSlotDate(), TextView.BufferType.NORMAL);
-        scheduleDate.setKeyListener(null);
+//        scheduleDate.setKeyListener(null);
 
         TextView scheduleSttime = (TextView)listItemView.findViewById(R.id.maintain_schedule_sttime_text_view);
         scheduleSttime.setText(currentPS.getProgramSlotSttime(), TextView.BufferType.NORMAL);
-        scheduleSttime.setKeyListener(null);
+//        scheduleSttime.setKeyListener(null);
 
         TextView scheduleDuration = (TextView)listItemView.findViewById(R.id.maintain_schedule_duration_text_view);
         scheduleDuration.setText(currentPS.getProgramSlotDuration(), TextView.BufferType.NORMAL);
-        scheduleDuration.setKeyListener(null);
+//        scheduleDuration.setKeyListener(null);
 
         TextView schedulePresenter = (TextView)listItemView.findViewById(R.id.maintain_schedule_presenter_text_view);
         schedulePresenter.setText(currentPS.getProgramSlotPresenter(), TextView.BufferType.NORMAL);
-        schedulePresenter.setKeyListener(null);
+//        schedulePresenter.setKeyListener(null);
 
         TextView scheduleProducer = (TextView)listItemView.findViewById(R.id.maintain_schedule_producer_text_view);
         scheduleProducer.setText(currentPS.getProgramSlotProducer(), TextView.BufferType.NORMAL);
-        scheduleProducer.setKeyListener(null);
+//        scheduleProducer.setKeyListener(null);
 
-        Log.v(TAG, "Listing program slot: " + currentPS.getRadioProgramName() + " " +
+        Log.v(TAG, "Listing program slot: " + currentPS.getId() + " " +
+                currentPS.getRadioProgramName() + " " +
                 currentPS.getProgramSlotSttime() + " " +
                 currentPS.getProgramSlotSttime() + "...");
 

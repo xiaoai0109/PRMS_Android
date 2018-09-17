@@ -4,6 +4,11 @@
 
     <!-- android:icon="@drawable/ic_done" -->
     <item
+        android:id="@+id/action_copy"
+        android:title="@string/action_copy"
+
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_view"
         android:title="@string/action_view"
 

@@ -78,7 +78,7 @@ public class ScheduleListScreen extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         mListView.setSelection(0);
-
+        Log.e("ScheduleListScreen", "onDisplayScheduleList");
         ControlFactory.getScheduleController().onDisplayScheduleList(this);
     }
 
@@ -102,11 +102,31 @@ public class ScheduleListScreen extends AppCompatActivity {
                     Log.v(TAG, "There is no selected program slot.");
                 }
                 else {
-                    Log.d(TAG, "Viewing program slot: " + selectedPS.getRadioProgramName() + " " +
-                            selectedPS.getProgramSlotDuration() + " " +
-                            selectedPS.getProgramSlotSttime() + "...");
+                    Log.d(TAG, "Viewing program slot: " + selectedPS.getId() + " " +
+                            selectedPS.getRadioProgramName() + " " +
+                            selectedPS.getProgramSlotSttime() + " " +
+                            selectedPS.getProgramSlotDuration() + "...");
                     ControlFactory.getScheduleController().selectEditSchedule(selectedPS);
                 }
+                return true;
+            case R.id.action_copy:
+                if (selectedPS == null) {
+                    // Prompt for the selection of a radio program.
+                    Toast.makeText(this, "Select a program slot first! Use arrow keys on emulator", Toast.LENGTH_SHORT).show();
+                    Log.v(TAG, "There is no selected program slot.");
+                }
+                else {
+                    selectedPS.setId(null);
+                    selectedPS.setProgramSlotDate(null);
+                    selectedPS.setProgramSlotSttime(null);
+                    Log.d(TAG, "Copying program slot: " + "id: " + selectedPS.getId() + " " +
+                            selectedPS.getRadioProgramName() + " " +
+                            selectedPS.getProgramSlotDate() + " " +
+                            selectedPS.getProgramSlotSttime() + " " +
+                            selectedPS.getProgramSlotPresenter() + "...");
+                    ControlFactory.getScheduleController().selectCopySchedule(selectedPS);
+                }
+                return true;
         }
 
         return true;

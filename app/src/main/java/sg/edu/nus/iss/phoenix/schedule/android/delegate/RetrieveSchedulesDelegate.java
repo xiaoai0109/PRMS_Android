@@ -47,12 +47,13 @@ public class RetrieveSchedulesDelegate extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        Uri builtUri1 = Uri.parse( PRMS_BASE_URL_SCHEDULE).buildUpon().build();
+        Uri builtUri1 = Uri.parse(PRMS_BASE_URL_SCHEDULE).buildUpon().build();
         Uri builtUri = Uri.withAppendedPath(builtUri1, params[0]).buildUpon().build();
         Log.v(TAG, builtUri.toString());
         URL url = null;
         try {
             url = new URL(builtUri.toString());
+            Log.v("retrieve schedule", url.toString());
         } catch (MalformedURLException e) {
             Log.v(TAG, e.getMessage());
             return e.getMessage();
@@ -85,9 +86,10 @@ public class RetrieveSchedulesDelegate extends AsyncTask<String, Void, String> {
                 JSONObject reader = new JSONObject(result);
                 JSONArray psArray = reader.getJSONArray("psList");
 
-                Log.d(TAG, "loading ps psArray " + psArray);
+                Log.e(TAG, "loading ps psArray " + psArray);
                 for (int i = 0; i < psArray.length(); i++) {
                     JSONObject psJson = psArray.getJSONObject(i);
+                    String id = psJson.getString("id");
                     String rpname = psJson.getString("rpname");
                     String date = psJson.getString("date");
                     String sttime = psJson.getString("sttime");
@@ -95,7 +97,7 @@ public class RetrieveSchedulesDelegate extends AsyncTask<String, Void, String> {
                     String presenter = psJson.getString("presenter");
                     String producer = psJson.getString("producer");
                     Log.d(TAG, "loading ps jsonObject " + psJson);
-                    programSlots.add(new ProgramSlot(rpname, date, sttime, duration, presenter, producer));
+                    programSlots.add(new ProgramSlot(id, rpname, date, sttime, duration, presenter, producer));
                 }
             } catch (JSONException e) {
                 Log.v(TAG, e.getMessage());

@@ -35,8 +35,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Duration"
-        tools:text="Duration" />
+        android:text="Duration (hh:mm:ss)"
+        tools:text="Duration (hh:mm:ss)" />
 
     <EditText
         android:id="@+id/maintain_program_duration_text_view"

@@ -38,6 +38,7 @@ public class ScheduleController {
     }
 
     public void onDisplayScheduleList(ScheduleListScreen scheduleListScreen) {
+        Log.e("ScheduleController", "onDisplayScheduleList");
         this.scheduleListScreen = scheduleListScreen;
         new RetrieveSchedulesDelegate(this).execute("all");
     }
@@ -54,14 +55,34 @@ public class ScheduleController {
 
     public void selectEditSchedule(ProgramSlot programSlot) {
         ps2edit = programSlot;
-        Log.v(TAG, "Editing radio program: " + programSlot.getRadioProgramName() + " "
+        Log.d(TAG, "Editing program slot: " + programSlot.getRadioProgramName() + " "
                 + programSlot.getProgramSlotDate() + " " + programSlot.getProgramSlotSttime() + "...");
 
         Intent intent = new Intent(MainController.getApp(), MaintainScheduleScreen.class);
         Bundle b = new Bundle();
+        b.putString("Id", programSlot.getId());
         b.putString("Rpname", programSlot.getRadioProgramName());
         b.putString("Date", programSlot.getProgramSlotDate());
         b.putString("Sttime", programSlot.getProgramSlotSttime());
+        b.putString("Duration", programSlot.getProgramSlotDuration());
+        b.putString("Presenter", programSlot.getProgramSlotPresenter());
+        b.putString("Producer", programSlot.getProgramSlotProducer());
+        intent.putExtras(b);
+
+        MainController.displayScreen(intent);
+    }
+
+    public void selectCopySchedule(ProgramSlot programSlot) {
+        ps2edit = programSlot;
+        Log.d(TAG, "Copying program slot 2: " + "id: " + programSlot.getId() + " "
+                + programSlot.getRadioProgramName() + " "
+                + programSlot.getProgramSlotDate() + " "
+                + programSlot.getProgramSlotSttime() + " "
+                + programSlot.getProgramSlotPresenter() + "...");
+
+        Intent intent = new Intent(MainController.getApp(), MaintainScheduleScreen.class);
+        Bundle b = new Bundle();
+        b.putString("Rpname", programSlot.getRadioProgramName());
         b.putString("Duration", programSlot.getProgramSlotDuration());
         b.putString("Presenter", programSlot.getProgramSlotPresenter());
         b.putString("Producer", programSlot.getProgramSlotProducer());
@@ -74,26 +95,33 @@ public class ScheduleController {
         this.maintainScheduleScreen = maintainScheduleScreen;
         if (ps2edit == null)
             maintainScheduleScreen.createSchedule();
-        else
+        else if (ps2edit.getId() == null) {
+            Log.d("", "I am displaying copy" + "id:" + ps2edit.getId());
+            maintainScheduleScreen.copySchedule(ps2edit);
+        }
+        else {
+            Log.d("", "I am displaying edit" + "id:" + ps2edit.getId());
             maintainScheduleScreen.editSchedule(ps2edit);
+        }
     }
 
-    public void selectUpdateSchedule(ProgramSlot ps, ProgramSlot oldPs) {
-        Log.d(TAG, "selectUpdateSchedule new program slot at " + ps.getRadioProgramName() + " " +
+    public void selectUpdateSchedule(ProgramSlot ps) {
+        Log.d(TAG, "selectUpdateSchedule new program slot at " + ps.getId() + " " +
+                ps.getRadioProgramName() + " " +
                 ps.getProgramSlotDate() + " " +
                 ps.getProgramSlotSttime() + " " +
                 ps.getProgramSlotDuration() + " " +
                 ps.getProgramSlotPresenter() + "...");
-        Log.d(TAG, "selectUpdateSchedule old program slot at " + oldPs.getRadioProgramName() + " " +
-                oldPs.getProgramSlotDate() + " " +
-                oldPs.getProgramSlotSttime() + " " +
-                oldPs.getProgramSlotDuration() + " " +
-                oldPs.getProgramSlotPresenter() + "...");
-        new UpdateScheduleDelegate(this).execute(ps, oldPs);
+//        Log.d(TAG, "selectUpdateSchedule old program slot at " + oldPs.getRadioProgramName() + " " +
+//                oldPs.getProgramSlotDate() + " " +
+//                oldPs.getProgramSlotSttime() + " " +
+//                oldPs.getProgramSlotDuration() + " " +
+//                oldPs.getProgramSlotPresenter() + "...");
+        new UpdateScheduleDelegate(this).execute(ps);
     }
 
-    public void selectDeleteSchedule(ProgramSlot ps) {
-//        new DeleteScheduleDelegate(this).execute(ps.getScheduleSlotName());
+    public void selectDeleteSchedule(String id) {
+        new DeleteScheduleDelegate(this).execute(id);
     }
 
     public void scheduleDeleted(boolean success) {

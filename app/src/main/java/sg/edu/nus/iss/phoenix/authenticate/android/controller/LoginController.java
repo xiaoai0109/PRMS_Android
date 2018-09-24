@@ -11,6 +11,7 @@ import sg.edu.nus.iss.phoenix.core.android.controller.MainController;
 
 public class LoginController {
     // Tag for logging.
+
     private static final String TAG = LoginController.class.getName();
 
     private LoginScreen loginScreen;

@@ -89,14 +89,16 @@ public class ReviewSelectProgramScreen extends AppCompatActivity {
                 }
                 else {
                     Log.v(TAG, "Selected radio program: " + selectedRP.getRadioProgramName() + "...");
-                    ProgramSlot tmpPs = new ProgramSlot();
-                    tmpPs.setProgramSlotDate(getIntent().getExtras().getString("Date"));
-                    tmpPs.setProgramSlotSttime(getIntent().getExtras().getString("Sttime"));
-                    tmpPs.setProgramSlotDuration(getIntent().getExtras().getString("Duration"));
-                    tmpPs.setProgramSlotPresenter(getIntent().getExtras().getString("Presenter"));
-                    tmpPs.setProgramSlotProducer(getIntent().getExtras().getString("Producer"));
+//                    ProgramSlot tmpPs = new ProgramSlot();
+//                    tmpPs.setProgramSlotDate(getIntent().getExtras().getString("Date"));
+//                    tmpPs.setProgramSlotSttime(getIntent().getExtras().getString("Sttime"));
+//                    tmpPs.setProgramSlotDuration(getIntent().getExtras().getString("Duration"));
+//                    tmpPs.setProgramSlotPresenter(getIntent().getExtras().getString("Presenter"));
+//                    tmpPs.setProgramSlotProducer(getIntent().getExtras().getString("Producer"));
 
-                    ControlFactory.getReviewSelectProgramController().selectProgram(selectedRP, tmpPs);
+//                    ControlFactory.getReviewSelectProgramController().selectProgram(selectedRP, tmpPs);
+
+                    ControlFactory.getReviewSelectProgramController().selectProgram(selectedRP);
                 }
         }
 

@@ -37,7 +37,7 @@
         <activity android:name=".core.android.ui.MainScreen" />
         <activity android:name=".radioprogram.android.ui.ProgramListScreen" />
         <activity android:name=".radioprogram.android.ui.MaintainProgramScreen" />
-        <activity android:name=".radioprogram.android.ui.ReviewSelectProgramScreen"></activity>
+        <activity android:name=".radioprogram.android.ui.ReviewSelectProgramScreen" />
         <activity android:name=".schedule.android.ui.ScheduleListScreen" />
         <activity android:name=".schedule.android.ui.MaintainScheduleScreen" />
         <!--<activity android:name=".schedule.android.ui.ReviewSelectScheduleScreen"></activity>-->

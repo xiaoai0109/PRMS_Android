@@ -33,20 +33,20 @@ public class ReviewSelectProgramController {
         MainController.displayScreen(intent);
     }
 
-    public void startUseCase(ProgramSlot ps) {
-        rpSelected = null;
-        Intent intent = new Intent(MainController.getApp(), ReviewSelectProgramScreen.class);
-        Bundle b = new Bundle();
-        b.putString("Rpname", ps.getRadioProgramName());
-        b.putString("Date", ps.getProgramSlotDate());
-        b.putString("Sttime", ps.getProgramSlotSttime());
-        b.putString("Duration", ps.getProgramSlotDuration());
-        b.putString("Presenter", ps.getProgramSlotPresenter());
-        b.putString("Producer", ps.getProgramSlotProducer());
-        intent.putExtras(b);
-        MainController.displayScreen(intent);
-
-    }
+//    public void startUseCase(ProgramSlot ps) {
+//        rpSelected = null;
+//        Intent intent = new Intent(MainController.getApp(), ReviewSelectProgramScreen.class);
+//        Bundle b = new Bundle();
+//        b.putString("Rpname", ps.getRadioProgramName());
+//        b.putString("Date", ps.getProgramSlotDate());
+//        b.putString("Sttime", ps.getProgramSlotSttime());
+//        b.putString("Duration", ps.getProgramSlotDuration());
+//        b.putString("Presenter", ps.getProgramSlotPresenter());
+//        b.putString("Producer", ps.getProgramSlotProducer());
+//        intent.putExtras(b);
+//        MainController.displayScreen(intent);
+//
+//    }
 
     public void onDisplay(ReviewSelectProgramScreen reviewSelectProgramScreen) {
         this.reviewSelectProgramScreen = reviewSelectProgramScreen;
@@ -57,27 +57,27 @@ public class ReviewSelectProgramController {
         reviewSelectProgramScreen.showPrograms(radioPrograms);
     }
 
-//    public void selectProgram(RadioProgram radioProgram) {
-//        rpSelected = radioProgram;
-//        Log.v(TAG, "Selected radio program: " + radioProgram.getRadioProgramName() + ".");
-//        // To call the base use case controller with the selected radio program.
-//        // At present, call the MainController instead.
-//        ControlFactory.getMainController().selectedProgram(rpSelected);
-//    }
-
-    public void selectProgram(RadioProgram radioProgram, ProgramSlot programSlot) {
+    public void selectProgram(RadioProgram radioProgram) {
         rpSelected = radioProgram;
         Log.v(TAG, "Selected radio program: " + radioProgram.getRadioProgramName() + ".");
-//        programSlot.setRadioProgramName(rpSelected.getRadioProgramName());
-        Log.d(TAG, "Updating new program slot via selecting " + programSlot.getRadioProgramName() + "\n" +
-                programSlot.getProgramSlotDate() + " " +
-                programSlot.getProgramSlotSttime() + " " +
-                programSlot.getProgramSlotDuration() + " " +
-                programSlot.getProgramSlotPresenter() + " " +
-                programSlot.getProgramSlotProducer() + "...");
         // To call the base use case controller with the selected radio program.
-        ControlFactory.getScheduleController().selectedProgram(radioProgram, programSlot);
+        ControlFactory.getScheduleController().selectedProgram(radioProgram);
+
     }
+
+//    public void selectProgram(RadioProgram radioProgram, ProgramSlot programSlot) {
+//        rpSelected = radioProgram;
+//        Log.v(TAG, "Selected radio program: " + radioProgram.getRadioProgramName() + ".");
+////        programSlot.setRadioProgramName(rpSelected.getRadioProgramName());
+//        Log.d(TAG, "Updating new program slot via selecting " + programSlot.getRadioProgramName() + "\n" +
+//                programSlot.getProgramSlotDate() + " " +
+//                programSlot.getProgramSlotSttime() + " " +
+//                programSlot.getProgramSlotDuration() + " " +
+//                programSlot.getProgramSlotPresenter() + " " +
+//                programSlot.getProgramSlotProducer() + "...");
+//        // To call the base use case controller with the selected radio program.
+//        ControlFactory.getScheduleController().selectedProgram(radioProgram, programSlot);
+//    }
 
     public void selectCancel() {
         rpSelected = null;

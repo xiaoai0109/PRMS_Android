@@ -73,18 +73,27 @@ public class DeleteScheduleDelegate extends AsyncTask<String, Void, Boolean> {
             httpURLConnection.setUseCaches (false);
             System.out.println(httpURLConnection.getResponseCode());
             Log.v(TAG, "Http DELETE response " + httpURLConnection.getResponseCode());
+            if (httpURLConnection.getResponseCode() == 409) {
+                return false;
+            }
+
             success = true;
         } catch (IOException exception) {
             Log.v(TAG, exception.getMessage());
         } finally {
             if (httpURLConnection != null) httpURLConnection.disconnect();
         }
-        return new Boolean(success);
+        return true;
     }
 
     @Override
     protected void onPostExecute(Boolean result) {
-        scheduleController.scheduleDeleted(result.booleanValue());
+        Log.v(TAG, "Http DELETE result " + result.toString());
+//        scheduleController.scheduleDeleted(result.booleanValue());
+        scheduleController.scheduleDeleted(result);
+
+//        scheduleController.scheduleDeleted(true);
+
     }
 
 }

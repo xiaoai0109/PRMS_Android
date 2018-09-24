@@ -26,8 +26,6 @@ public class RadioProgramAdapter extends ArrayAdapter<RadioProgram> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItemView = convertView;
         if (listItemView == null) {
-//            listItemView = LayoutInflater.from(getContext()).inflate(
-//                    R.layout.activity_radio_program, parent, false);
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.row_radio_program, parent, false);
         }
